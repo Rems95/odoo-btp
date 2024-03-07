@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <record id="view_tree_client" model="ir.ui.view">
+        <field name="name">Client Tree</field>
+        <field name="model">reception.client</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="nom"/>
+                <field name="prenom"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_form_client" model="ir.ui.view">
+        <field name="name">Client Form</field>
+        <field name="model">reception.client</field>
+        <field name="arch" type="xml">
+            <form>
+                <header> </header>
+                <sheet>
+                    <group>
+                        <field name="nom"/>
+                        <field name="prenom"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>    
+
+    <menuitem id="menu_client" name="Reception"/>
+
+    <record id="action_client_list" model="ir.actions.act_window">
+        <field name="name">Liste des clients</field>
+        <field name="res_model">reception.client</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_client_list" 
+                name="Liste des clients"
+                parent="menu_client"
+                action="action_client_list"/>
+
+</odoo>

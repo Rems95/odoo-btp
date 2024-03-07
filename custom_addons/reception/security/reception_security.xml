@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="module_reception_security" model="ir.module.category">
+        <field name="name">Reception</field>
+        <field name="description">Droits de la réception</field>
+    </record>
+
+    <record id="reception_group_user" model="res.groups">
+        <field name="name">Utilisateur</field>
+        <field name="category_id" ref="module_reception_security"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+
+    <record id="reception_group_admin" model="res.groups">
+        <field name="name">Administrateur</field>
+        <field name="category_id" ref="module_reception_security"/>
+        <field name="implied_ids" eval="[(4, ref('reception_group_user'))]"/>
+        <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+    </record>
+</odoo>
